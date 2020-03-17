@@ -1,5 +1,6 @@
 var express = require("express")
     router = express.Router()
+    Todo = require("../models/todos")
 
 
 // get list of todos
@@ -27,6 +28,13 @@ router.post("/api/todos", (req, res) => {
 router.put("/api/todos/:todoId", (req, res) => {
   Todo.findByIdAndUpdate(req.params.todoId, req.body, {new: true}, (err, updatedTodo) => {
     res.json(updatedTodo)
+  })
+})
+
+// delete all 
+router.delete("/api/todos", (req, res) => {
+  Todo.remove({}, (err) => {
+    res.send("removed all")
   })
 })
 

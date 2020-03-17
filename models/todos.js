@@ -5,6 +5,10 @@ var todoSchema = new mongoose.Schema({
     type: String,
     required: "Cannot be blank"
   },
+  listId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "List"
+  },
   completed: {
     type: Boolean,
     default: false

@@ -1,17 +1,14 @@
 var mongoose = require("mongoose")
 
 var listSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    required: "Cannot be blank"
+  },
   display: {
     type: Boolean,
     default: true
-  },
-  todos: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Todo"
-    }
-  ]
+  }
 })
 
 module.exports = mongoose.model("List", listSchema)

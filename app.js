@@ -4,8 +4,8 @@ var express = require("express")
     cors = require("cors")
     bodyParser = require("body-parser")
     mongoose = require("mongoose")
-    Todo = require("./models/todos")
     todoRoutes = require("./routes/todos")
+    listRoutes = require("./routes/lists")
 
 
 
@@ -22,6 +22,7 @@ mongoose.connect('mongodb://localhost:27017/improved_todo', {
 
 
 app.use(todoRoutes)
+app.use(listRoutes)
 
   
 app.listen(port, () => console.log("Starting improved_todo server"))
