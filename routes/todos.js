@@ -10,6 +10,12 @@ router.get("/api/todos", (req, res) => {
   })
 })
 
+router.get("/api/lists/:listId/todos", (req, res) => {
+  Todo.find({listId: req.params.listId}, (err, todos) => {
+    res.json(todos)
+  })
+})
+
 // get individual todo
 router.get("/api/todos/:todoId", (req, res) => {
   Todo.findById(req.params.todoId, (err, foundTodo) => {
@@ -23,6 +29,17 @@ router.post("/api/todos", (req, res) => {
     res.json(newTodo)
   })
 })
+
+// create new todo in a list
+// router.post("/api/lists/:listId/", (req, res) => {
+//   List.findById(req.params.listId, (err, foundList) => {
+//     Todo.create(req.body, (err, newTodo) => {
+//       foundList.push(newTodo)
+//       foundList.save()
+//       res.json(newTodo)
+//     })
+//   })
+// })
 
 // update todo 
 router.put("/api/todos/:todoId", (req, res) => {
